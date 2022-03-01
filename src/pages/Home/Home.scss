@@ -1,0 +1,13 @@
+@use '../../scss/' as *;
+
+.movie-list {
+    margin-top: 5rem;
+    &__header {
+        @include flex(space-between, center);
+        & > h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@use '../../scss/' as *;
+
+.modal {
+    @include flex(center, center);
+    position: fixed;
+    top: 0;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+
+    &.active {
+        display: flex;
+    }
+
+    &-content {
+        width: 50%;
+        position: relative;
+        display: none;
+
+        background-color: $black-color;
+        padding: 3rem;
+
+        &__close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+
+            font-size: 2rem;
+            cursor: pointer;
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+    }
+
+    &.active &-content {
+        display: block;
+    }
+}

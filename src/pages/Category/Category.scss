@@ -1,0 +1,49 @@
+@use '../../scss/' as *;
+
+.search {
+    width: 100%;
+    margin-bottom: 7rem;
+
+    &-header {
+        background-image: url('../../images/bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        height: 40rem;
+        position: relative;
+        @include flex(space-between, center);
+        margin-bottom: 7rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        &__title {
+            z-index: 10;
+            font-size: 4rem;
+            font-weight: 600;
+        }
+
+        &__input {
+            z-index: 10;
+            @include flex(center, center);
+            background-color: $white-color;
+
+            border-radius: 0.5rem;
+            overflow: hidden;
+            & > input {
+                outline: none;
+                border: none;
+                padding: 1.5rem 4rem;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

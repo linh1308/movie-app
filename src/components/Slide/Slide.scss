@@ -1,0 +1,73 @@
+@use '../../scss/' as *;
+
+.slide {
+    &-item {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        padding: 9rem 0;
+        @include flex(flex-start, center);
+        // height: 100vh;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        &__content {
+            @include flex(center, center);
+            gap: 3rem;
+
+            &--info {
+                width: 50%;
+                position: relative;
+                .title {
+                    font-size: 5rem;
+                    font-weight: 600;
+                }
+
+                .overview {
+                    font-size: 2rem;
+                    font-weight: 300;
+                    margin: 1rem 0 2rem;
+
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    line-clamp: 3;
+                }
+
+                .buttons {
+                    @include flex(flex-start, center);
+                    gap: 4rem;
+                }
+
+                @include w720 {
+                    width: 90%;
+                }
+            }
+
+            &--poster {
+                position: relative;
+                img {
+                    height: 50rem;
+                    border-radius: 1rem;
+                }
+
+                @include w720 {
+                    display: none;
+                }
+            }
+        }
+    }
+}

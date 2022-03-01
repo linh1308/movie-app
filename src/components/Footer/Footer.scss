@@ -1,0 +1,143 @@
+@use "../../scss/" as *;
+
+.footer {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    background-image: url('../../images/bg.jpg');
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    &-content {
+        @include flex(space-between, center);
+        position: relative;
+        z-index: 10;
+        &__header {
+            .footer-content__logo {
+                @include flex(center, center);
+                margin-bottom: 2rem;
+                & > img {
+                    width: 5rem;
+                    margin-right: 2rem;
+                }
+
+                & > a {
+                    color: $white-color;
+                    font-weight: 600;
+                    font-size: 4rem;
+                }
+            }
+
+            .footer-content__socials {
+                text-align: center;
+                &-icons {
+                    margin-right: 2rem;
+                    font-size: 2rem;
+                    cursor: pointer;
+                    transition: color 0.3s ease-in-out;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+
+        &__lists {
+            @include flex(space-between, flex-start);
+            gap: 5rem;
+
+            @include w720 {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        &__list {
+            @include flex(center, center);
+            flex-direction: column;
+            & > h3 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            & > a {
+                font-size: 1.5rem;
+                color: $white-color;
+                margin-bottom: 1rem;
+
+                &:hover {
+                    color: $primary-color;
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+        }
+
+        @include w1024 {
+            flex-direction: column;
+            gap: 5rem;
+        }
+    }
+
+    &-terms {
+        @include flex(space-between, center);
+        margin-top: 3rem;
+        position: relative;
+        z-index: 10;
+        .copy-rights {
+            font-size: 1.5rem;
+        }
+
+        .terms-policy {
+            color: $white-color;
+            font-size: 1.5rem;
+            & > a {
+                color: $white-color;
+                margin-left: 2rem;
+                position: relative;
+
+                &:hover {
+                    color: $primary-color;
+                    transition: color 0.3s ease-in-out;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: -8%;
+
+                    transform: translateY(-50%);
+                    height: 1.5rem;
+                    width: 0.2rem;
+                    background-color: $white-color;
+                }
+
+                &:last-child {
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                &:nth-child(2) {
+                    &::after {
+                        right: -12%;
+                    }
+                }
+            }
+        }
+    }
+
+    @include w720 {
+        margin-bottom: 8rem;
+    }
+}

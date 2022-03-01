@@ -1,0 +1,108 @@
+@use "../../scss/" as *;
+
+.movie-detail {
+    &__hero {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+
+        @include flex(center, center);
+        gap: 4rem;
+        padding: 9rem 0;
+
+        &::after {
+            content: "";
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-poster {
+            position: relative;
+            z-index: 10;
+            & > img {
+                height: 40rem;
+                border-radius: 1rem;
+
+                @include w720 {
+                    display: none;
+                }
+            }
+        }
+
+        .hero-infor {
+            position: relative;
+            z-index: 10;
+            width: 50%;
+        
+            .name {
+                font-weight: 600;
+                font-size: 4rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .desc {
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+
+            @include w720 {
+                width: 100%;
+                margin-top: 4rem;
+            }
+        }
+    }
+
+    &__caster {
+        margin: 5rem 0;
+        width: 100%;
+        margin: 3rem auto;
+
+        & > h3 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .caster-image {
+            height: 25rem;
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+        .name {
+            font-size: 1.7rem;
+            font-weight: 400;
+            margin-top: 1.5rem;
+        }
+    }
+
+    &__videos {
+        margin-bottom: 5rem;
+
+        .video {
+            margin: 4rem 0;
+            .title {
+                font-size: 2.5rem;
+                font-weight: 600;
+                margin-bottom: 2rem;
+            }
+
+            .video-embed {
+                height: 60rem;
+            }
+        }
+    }
+
+    &__similar {
+        & > h3 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+    }
+}
