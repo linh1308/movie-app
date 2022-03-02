@@ -82,14 +82,15 @@
 
             left: 50%;
             transform: translate(-50%);
-            padding: 0 3rem 2rem;
+            padding: 2rem 3rem 2rem;
+            background-color: $black-color;
         }
     }
 
     .account {
         @include flex(center, center);
         gap: 2rem;
-        
+
         &__logo {
             font-size: 2.5rem;
             cursor: pointer;
@@ -101,18 +102,21 @@
             cursor: pointer;
             position: relative;
 
-
             &::after {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 100%;
 
                 left: 0;
                 width: 0;
                 height: 0.2rem;
-                
+
                 background-color: $primary-color;
                 transition: width 0.2s linear;
+            }
+
+            @include w720 {
+                display: none;
             }
         }
 
@@ -121,7 +125,8 @@
                 width: 100%;
             }
 
-            .account__logo, .account__text {
+            .account__logo,
+            .account__text {
                 color: $primary-color;
             }
         }

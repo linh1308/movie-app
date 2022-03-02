@@ -26,6 +26,10 @@ const Header = () => {
 	const active = navbar.findIndex(index => index.path === pathname);
 	const headerRef = useRef();
 
+	useEffect(() => {
+		window.scroll({top: 0, left: 0, behavior: 'smooth' });
+	}, [pathname]);
+
 	const renderNav = () => {
 		const navList = navbar.map((item, id) => {
 			return (

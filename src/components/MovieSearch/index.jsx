@@ -56,6 +56,7 @@ const MovieSearch = ({ keyword, cate }) => {
 
     return (
         <>
+            <div className="container movie-search__title">{keyword !== '' ? `Keyword: ${keyword}` : ''}</div>
             <div className='container movie-search'>
                 {movies.map((movie, index) => {
                     return (
