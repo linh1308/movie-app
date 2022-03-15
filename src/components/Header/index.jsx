@@ -1,8 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { AiOutlineHome } from 'react-icons/ai';
+import { BiMoviePlay } from 'react-icons/bi';
+import { FaTv, FaUserAlt } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import './Header.scss';
-import { FaUserAlt } from 'react-icons/fa';
 
 const navbar = [
 	{
@@ -27,40 +29,36 @@ const Header = () => {
 	const headerRef = useRef();
 
 	useEffect(() => {
-		window.scroll({top: 0, left: 0, behavior: 'smooth' });
+		window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 	}, [pathname]);
 
-	const renderNav = () => {
-		const navList = navbar.map((item, id) => {
-			return (
-				<li key={id} className={`${id === active ? 'nav__item active' : 'nav__item'}`}>
-					<Link to={item.path}>{item.name}</Link>
-				</li>
-			);
-		});
-
-		return navList;
-	};
+	const renderNav = navbar.map((item, id) => {
+		return (
+			<li key={id} className={`${id === active ? 'nav__item active' : 'nav__item'}`}>
+				<Link to={item.path}>{item.name}</Link>
+			</li>
+		);
+	});
 
 	useEffect(() => {
-		const headerShrink = () => {
+		const headerScroll = () => {
 			if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-				headerRef.current.classList.add('shrink');
+				headerRef.current.classList.add('show');
 			} else {
-				headerRef.current.classList.remove('shrink');
+				headerRef.current.classList.remove('show');
 			}
 		}
 
-		window.addEventListener('scroll', headerShrink);
+		window.addEventListener('scroll', headerScroll);
 
 		return () => {
-			window.removeEventListener('scroll', headerShrink);
+			window.removeEventListener('scroll', headerScroll);
 		}
 	}, [])
 
 
 	return (
-		<div className='header' ref={headerRef}>
+		<div className='header'>
 			<div className="header__wrapper container">
 				<div className="logo">
 					<img src={logo} alt="logo" />
@@ -68,7 +66,13 @@ const Header = () => {
 				</div>
 
 				<ul className="header__navbar">
-					{renderNav()}
+					{renderNav}
+				</ul>
+
+				<ul className='navbar__icons' ref={headerRef}>
+					<Link to='/'><AiOutlineHome /></Link>
+					<Link to='/movie'><BiMoviePlay /></Link>
+					<Link to='/tv'><FaTv /></Link>
 				</ul>
 
 				<div className="account">

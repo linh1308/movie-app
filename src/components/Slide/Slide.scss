@@ -1,4 +1,4 @@
-@use '../../scss/' as *;
+@use "../../scss/" as *;
 
 .slide {
     &-item {
@@ -8,10 +8,14 @@
         position: relative;
         padding: 9rem 0;
         @include flex(flex-start, center);
+
+        @include w720 {
+            height: 50rem;
+        }
         // height: 100vh;
 
         &::before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
 
@@ -31,6 +35,12 @@
                 .title {
                     font-size: 5rem;
                     font-weight: 600;
+
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 2;
+                    line-clamp: 2;
+                    -webkit-box-orient: vertical;
                 }
 
                 .overview {
@@ -41,7 +51,7 @@
                     -webkit-box-orient: vertical;
                     text-overflow: ellipsis;
                     overflow: hidden;
-                    
+
                     display: -webkit-box;
                     -webkit-line-clamp: 3;
                     line-clamp: 3;

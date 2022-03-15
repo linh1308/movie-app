@@ -4,6 +4,7 @@ import { SwiperSlide, Swiper } from 'swiper/react';
 import apiConfig from '../../api/apiConfig';
 import tmdbApi from '../../api/tmdbApi';
 import Listing from '../../components/Listing';
+import white from '../../images/white_bg.jpg';
 import './Detail.scss';
 
 const Detail = () => {
@@ -73,14 +74,14 @@ const Detail = () => {
 						}
 					}}
 				>
-					{casterList.map((caster, index) => {
+					{casterList ? casterList.map((caster, index) => {
 						return (
 							<SwiperSlide key={index}>
-								<img src={caster.profile_path ? apiConfig.w500Image(caster.profile_path) : ''} alt="caster" className='caster-image'/>
+								<img src={caster.profile_path ? apiConfig.w500Image(caster.profile_path) : white} alt="caster" className='caster-image'/>
 								<p className="name">{caster.name}</p>
 							</SwiperSlide>
 						)
-					})}
+					}) : ''}
 				</Swiper>
 			</div>
 

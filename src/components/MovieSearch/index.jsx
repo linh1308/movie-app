@@ -35,6 +35,7 @@ const MovieSearch = ({ keyword, cate }) => {
                 };
 
                 response = await tmdpApi.search(cate, { params });
+                navigate('/movie/search/' + keyword, {replace: true})
             }
 
             setmovies(response.results);

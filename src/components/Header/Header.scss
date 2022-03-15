@@ -3,7 +3,7 @@
 .header {
     width: 100%;
     height: 8rem;
-    position: fixed;
+    position: absolute;
 
     top: 0;
     left: 0;
@@ -28,107 +28,129 @@
             }
         }
 
-        @include w720 {
-            @include flex(space-between, center);
-        }
-    }
-
-    &.shrink {
-        height: 8rem;
-        background-color: $black-color;
-        transition: all 0.2s linear;
-    }
-
-    &__navbar {
-        @include flex(center, center);
-        gap: 3rem;
-
-        .nav__item {
-            color: $white-color;
-            position: relative;
-            a {
+        .account {
+            @include flex(center, center);
+            gap: 2rem;
+    
+            &__logo {
+                font-size: 2.5rem;
+                cursor: pointer;
+            }
+    
+            &__text {
                 font-size: 2.5rem;
                 font-weight: 600;
-                color: $white-color;
-                transition: color 0.2s linear;
-                &:hover {
+                cursor: pointer;
+                position: relative;
+    
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+    
+                    left: 0;
+                    width: 0;
+                    height: 0.2rem;
+    
+                    background-color: $primary-color;
+                    transition: width 0.2s linear;
+                }
+    
+                @include w720 {
+                    display: none;
+                }
+            }
+    
+            &:hover {
+                .account__text::after {
+                    width: 100%;
+                }
+    
+                .account__logo,
+                .account__text {
                     color: $primary-color;
                 }
             }
-
-            &::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 0;
-
-                width: 0;
-                height: 0.2rem;
-                background-color: $primary-color;
-                transition: width 0.2s linear;
-            }
-
-            &.active::after,
-            &:hover::after {
-                width: 100%;
-            }
         }
 
-        @include w720 {
-            width: 100%;
-            @include flex(space-around, space-between);
-            position: fixed;
-            bottom: 0;
-
-            left: 50%;
-            transform: translate(-50%);
-            padding: 2rem 3rem 2rem;
-            background-color: $black-color;
-        }
-    }
-
-    .account {
-        @include flex(center, center);
-        gap: 2rem;
-
-        &__logo {
-            font-size: 2.5rem;
-            cursor: pointer;
-        }
-
-        &__text {
-            font-size: 2.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            position: relative;
-
-            &::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-
-                left: 0;
-                width: 0;
-                height: 0.2rem;
-
-                background-color: $primary-color;
-                transition: width 0.2s linear;
+        .header__navbar {
+            @include flex(center, center);
+            gap: 3rem;
+    
+            .nav__item {
+                color: $white-color;
+                position: relative;
+    
+                a {
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                    color: $white-color;
+                    transition: color 0.2s linear;
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+    
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+    
+                    width: 0;
+                    height: 0.2rem;
+                    background-color: $primary-color;
+                    transition: width 0.2s linear;
+                }
+    
+                &.active::after,
+                &:hover::after {
+                    width: 100%;
+                }
             }
 
             @include w720 {
                 display: none;
             }
         }
+    }
 
-        &:hover {
-            .account__text::after {
-                width: 100%;
-            }
+    .navbar__icons {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
 
-            .account__logo,
-            .account__text {
+        @include flex(center, center);
+        flex-direction: column;
+        gap: 2rem;
+
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        font-size: 2.5rem;
+        padding: 4rem 2rem;
+
+        margin-left: 3rem;
+        border-radius: 1rem;
+        display: none;
+
+        & > a {
+            color: $white-color;
+            transition: color 0.2s ease-in-out;
+
+            &:hover {
                 color: $primary-color;
             }
+        }
+
+        &.show {
+            display: flex;
+        }
+
+        @include w720 {
+            display: flex;
+            font-size: 2rem;
+            padding: 3rem 1.5rem;
+            margin-left: 2rem;
         }
     }
 }
