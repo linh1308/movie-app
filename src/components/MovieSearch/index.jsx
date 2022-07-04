@@ -35,7 +35,7 @@ const MovieSearch = ({ keyword, cate }) => {
                 };
 
                 response = await tmdpApi.search(cate, { params });
-                navigate('/movie/search/' + keyword, {replace: true})
+                navigate(`../${cate}/search/` + params.query);
             }
 
             setmovies(response.results);
@@ -44,7 +44,7 @@ const MovieSearch = ({ keyword, cate }) => {
         }
 
         getMovies();
-    }, [cate, keyword, page]);
+    }, [cate, keyword, page, navigate]);
 
     const handleNextMovieClick = () => {
         if (page < totalPage) setPage(prev => prev + 1);
